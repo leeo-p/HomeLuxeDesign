@@ -1,0 +1,28 @@
+{
+    "salon":[
+        {"id":1, "img":"img/salon1.webp", "nom":"Fauteuil en twid jaune moutarde", "prix":"490"},
+        {"id":2, "img":"img/salon2.webp", "nom":"Canapé en velour vert sapin", "prix":"1 500"},
+        {"id":3, "img":"img/salon3.webp", "nom":"Canapé d'angle noir", "prix":"2 200"},
+        {"id":4, "img":"img/salon4.webp", "nom":"Canapé en daim beige", "prix":"1 300"},
+        {"id":5, "img":"img/salon5.webp", "nom":"Fauteuil en cuir blanc cassé", "prix":"350"},
+        {"id":6, "img":"img/salon6.webp", "nom":"Duo de table basse en bois & meuble TV noir", "prix":"890"}
+    ],
+    "cuisine":[
+        {"id":1, "img":"img/cuisine1.webp", "nom":"Cuisine marbre blanc & meubles gris", "prix":"5 400"},
+        {"id":2, "img":"img/cuisine2.webp", "nom":"Cuisine blanc & bois", "prix":"3 300"},
+        {"id":3, "img":"img/cuisine3.webp", "nom":"Cuisine contemporaine gris métalisé", "prix":"3 900"},
+        {"id":4, "img":"img/cuisine4.webp", "nom":"Cuisine moderne blanche & bois", "prix":"3 600"},
+        {"id":5, "img":"img/cuisine5.webp", "nom":"Cuisine noire & bois avec ilôt suspendu", "prix":"5 900"},
+        {"id":6, "img":"img/cuisine6.webp", "nom":"Cuisine gris métalisé & marbre", "prix":"4 800"}
+    ],
+    "sdb":[
+        {"id":1, "img":"img/sdb1.webp", "nom":"Baignoire noire métalisée", "prix":"850"},
+        {"id":2, "img":"img/sdb2.webp", "nom":"Meuble vasque & miroir led", "prix":"570"},
+        {"id":3, "img":"img/sdb3.webp", "nom":"Meuble double vasque & baignoire blanche", "prix":"1 390"},
+        {"id":4, "img":"img/sdb4.webp", "nom":"Meuble vasque & meuble de rangement suspendus", "prix":"960"},
+        {"id":5, "img":"img/sdb5.webp", "nom":"Meuble vasque & douche verrière", "prix":"780"},
+        {"id":6, "img":"img/sdb6.webp", "nom":"Meuble vasque en bois & douche à l'italienne noire", "prix":"1 180"}
+    ]
+}
+
+

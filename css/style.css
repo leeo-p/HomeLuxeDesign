@@ -1,0 +1,604 @@
+/* Importation de la police d'écriture */
+@font-face {
+    font-family: 'bitter';
+    src: url(font/Bitter-VariableFont_wght.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Propriétés de la page */
+body {
+    position: relative;
+    font-family: 'bitter', sans-serif;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Propriétés du header */
+header {
+    position: relative;
+    color: #071108;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 20%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    padding: 2% 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+/* Propriétés du logo */
+header .logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8%;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+    border: 4px solid #dfbb00;
+    margin: 1% 0 0 1%;
+}
+/* Propriétés du panier */
+header .iconPanier {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2.5%;
+    aspect-ratio: 1/1;
+    margin: 1% 1% 0 0;
+}
+header .iconPanier:hover {
+    cursor: pointer;
+}
+
+/* Propriétés du menu */
+nav {
+    position: relative;
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+nav ul {
+    border: 1px solid #071108;
+    background-color: #071108;
+    border-radius: 45px;
+    padding: 3px 3px 3px 3px;
+    margin: 0;
+    display: flex;
+    list-style: none;
+    gap: 0 2rem;
+}
+nav ul li {
+    min-width: 18ch;
+    height: 4ch;
+    text-align: center;
+    border: 2px solid #dfbb00;
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+}
+nav ul li a {
+    text-decoration: none;
+}
+li:hover {
+    background-color: #dfbb00;
+    color: #071108;
+    cursor: pointer;
+}
+
+/* Propriétés des paragraphes */
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Propriétés du corps du site */
+section {
+    position: relative;
+    margin: 0;
+    height: 70%;
+    display: flex;
+}
+/* Propriétés de la partie left */
+.left {
+    width: 20%;
+    margin: 0;
+    height: 100%;
+    border-top: 3px solid #dfbb00;
+    border-right: 3px solid #dfbb00;
+    border-bottom: 3px solid #dfbb00;
+    border-radius: 20px;
+}
+.left > *:not(ul) {
+    text-align: center;
+}
+.left ul li a {
+    text-decoration: none;
+}
+.left p {
+    margin: 50% 0 0 0;
+    padding: 0;
+}
+.left .connexion {
+    position: relative;
+    display: block;
+    padding: 1%;
+    margin: 1% auto 0 auto;
+    background-color: #000;
+    border-radius: 40px;
+    color: #dfbb00;
+    height: 2.5ch;
+    font-style: bold;
+    text-decoration: none;
+    width: 50%;
+}
+.left ul {
+    list-style: none;
+}
+.left ul li {
+    width: 80%;
+    border-radius: 10px;
+    text-align: center;
+}
+/* Propriétés de la partie right */
+.right {
+    position: relative;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 3px solid #dfbb00;
+    border-bottom: 3px solid #dfbb00;
+    border-radius: 20px;
+}
+.right .imgAgrandie {
+    position: absolute;
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 600px;
+    display: none;
+}
+.right .croix {
+    position: absolute;
+    text-align: center;
+    padding-top: 2px;
+    font-size: 24px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 25%;
+    right: 25%;
+    transform: translate(100%, -450%);
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 50%;
+    display: none;
+}
+.right .croix:hover {
+    cursor: pointer;
+}
+.right img {
+    width: 45%;
+    border-radius: 15px;
+}
+.right p {
+    text-align: left;
+    margin: 0 5% 0 5%;
+}
+/* Propriétés du formulaire */
+.right .contact form {
+    margin-left: 25%;
+    margin-top: 1%;
+    padding: 1% 2% 1% 2%;
+    display: flex;
+    flex-direction: column;
+    height: 135%;
+    width: 50%;
+    background: rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.right .contact form input, .right .contact form select {
+    width: 25%;
+    height: 4ch;
+    border: 1px solid #dfbb00;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+
+}
+
+.right .contact form textarea {
+    max-width: 100%;
+    height: 10ch;
+    border: 1px solid #dfbb00;
+    border-radius: 5px;
+}
+.right .contact form label{
+    margin: 2% 0 3px 0;
+    text-align: left;
+    pointer-events: none;
+    transition: .4s;
+}
+.right .contact form input[type="submit"] {
+    width: 10%;
+    height: 4ch;
+    border: 1px solid #dfbb00;
+    border-radius: 5px;
+    background-color: #dfbb00;
+    color: #071108;
+    margin-left: 90%;
+}
+
+
+/* Propriétés du footer */
+footer {
+    color:#4b4c4d;
+}
+footer ul {
+    display: flex;
+    padding:0;
+    list-style:none;
+    justify-content: center;
+    align-items: center;
+    font-size:18px;
+    margin-bottom:0;
+}
+
+footer li {
+    padding:0 10px;
+}
+footer ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+}
+footer ul a:hover {
+    opacity:1;
+}
+footer .copyright {
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+    color:#aaa;
+    margin-bottom:0;
+}
+footer .reseaux {
+    padding-top: 9px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+footer .reseaux a {
+    padding: 0;
+    width: 1.75%;
+}
+footer .reseaux img {
+    width: 100%;
+    opacity: .32;
+}
+
+/* Propriétés du hr */
+hr {
+    color: #ffd500;
+}
+
+/* Propriétés des sections changeantes */
+.actif {
+    background-color: #dfbb00;
+    color: #071108;
+}
+.to-change {
+    display: none;
+}
+.visible {
+    display: block;
+}
+
+/* Propriétés tableau d'articles */
+table {
+    width: 100%;
+}
+tr {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+td {
+    width: min-content;
+    position: relative;
+    display: flex;
+}
+td .quantite-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: max-content;
+    row-gap: 0.5rem;
+}
+.quantite-container .panier,
+.quantite-container .afficheStock {
+    width: 130px;
+    padding: 0.5ch;
+    background-color: #071108;
+    border-radius: 20px;
+    border: solid 2px #dfbb00;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.quantite-container .choix {
+    display: flex;
+    width: 130px;
+    justify-content: center;
+}
+.quantite {
+    width: 30px;
+    text-align: center;
+}
+td img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    min-width: 270px;
+    transition: 150ms ease-out;
+}
+td:hover p:not(.stock) {
+    display: block;
+}
+td:hover img {
+    transform: translateZ(0);
+    filter: brightness(.5);
+}
+td p:not(.stock) {
+    display: none;
+    position: absolute;
+    transform: translate(0, -50%);
+    top: 50%; left: 0;
+    padding: 1rem;
+    color: white;
+    width: 270px;
+    margin: 0 !important;
+}
+.stock {
+    display: none;
+    color: #071108;
+    height: 25%;
+    justify-content: center;
+}
+
+/* Panier */
+.right .contenuPanier {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 50%;
+    height: 90%;
+    top: 5%;
+    left: 2.5%;
+    border: 3px solid #dfbb00;
+    border-radius: 20px;
+    background: rgb(0, 0, 0, 0.1);
+}
+.contenuPanier .total,
+.contenuPanier .viderPanier, 
+.contenuPanier .commander {
+    position: absolute;
+    bottom: 2%;
+}
+.contenuPanier .commander,
+.contenuPanier .total {
+    right: 5%;
+}
+.contenuPanier .total {
+    bottom: 8%;
+    transform: translateX(50%);
+}
+.contenuPanier .viderPanier {
+    left: 5%;
+    width: 130px;
+    padding: 0.5ch;
+    background-color: #071108;
+    border-radius: 20px;
+    border: solid 2px #dfbb00;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.contenuPanier .commander {
+    width: 130px;
+    padding: 0.5ch;
+    background-color: #071108;
+    border-radius: 20px;
+    border: solid 2px #dfbb00;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Propriétés de recherche */
+.box{
+    position: absolute;
+    right: 5%;
+    top: 13%;
+}
+.box img {
+    position: absolute;
+    right: 23%;
+    top: 22%;
+    width: 22px;
+    aspect-ratio: 1/1;
+}
+.input {
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 3px solid #dfbb00;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: Comic Sans MS;
+    font-size: 16px;
+    color: #ffd52d;
+    outline: none;
+    transition: 0.7s;
+}
+.box:hover .input{
+    width: 250px;
+    background: #3b3640;
+    border-radius: 10px;
+}
+.box:hover img {
+    display: none;
+}
+
+.box i{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translate(-50%,-50%);
+    font-size: 26px;
+    color: #ffd52d;
+    transition: .2s;
+}
+.box:hover i{
+    opacity: 0;
+    z-index: -1;
+}
+
+
+
+
+/*-----------Page de connexion----------*/
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 450px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+}
+.login-box h2 {
+    font-size: 32px;
+    margin: 0 0 50px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.login-box .user-box {
+    position: relative;
+}
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+.login-box .user-box label {
+    position: absolute;
+    margin-top: 20px;
+    top: 0;
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .4s;
+}
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+    top: -15px;
+    left: 0;
+    color: #dfbb00;
+    background: rgba(0, 0, 0, 0.5);
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+.login-box form .submit {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 40px;
+    margin-left: 390px;
+    letter-spacing: 3px;
+}
+.login-box .submit:hover {
+    background: #071108;
+    color: #dfbb00;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #dfbb00,
+    0 0 15px #dfbb00,
+    0 0 25px #dfbb00,
+    0 0 35px #dfbb00;
+}
+
+.logoC {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8%;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+    border: 4px solid #dfbb00;
+    margin: 1% 0 0 1%;
+}
+
+.titrePDC {
+    margin: 0;
+    padding: 2% 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+.fond {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    transform: translateY(-25%);
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1.3/1;
+    opacity: 0.3;
+    z-index: -999;
+}
