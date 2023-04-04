@@ -378,7 +378,7 @@ td p:not(.stock) {
     transform: translate(0, -50%);
     top: 50%; left: 0;
     padding: 1rem;
-    color: white;
+    color: #fff;
     width: 270px;
     margin: 0 !important;
 }

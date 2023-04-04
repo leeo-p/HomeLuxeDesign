@@ -20,7 +20,7 @@ function changeSection(e) {
 
 // Fonction pour modifier la quantité d'un produit
 function ajusteQuantite(e, signe) {                     // e = boutton cliqué, signe = + ou -
-    const qte = e.parentElement.querySelector('input'); // Sélectionne l'input de la quantité
+    const qte = e.parentElement.querySelector('.quantite'); // Sélectionne l'input de la quantité
     if ((signe === '+') && (qte.value < 10)) {          // Si le signe est + et que la quantité est inférieure à 10
         qte.value++;                                    // Ajoute 1 à la quantité
     }
