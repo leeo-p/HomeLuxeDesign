@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    height: 100vh;
+    background-color: #444444; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 75%;
+    height: 75%;
+}
+
+.ui {
+    border: 0;
+    width: 60%;
+    margin: 0 auto;
+    padding: 10%;
+    display: flex;
+    gap: 20px;
+}
+
+.container-left {
+    width: 50%;
+    border: 3px solid #53917E;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: #000000 
+    0px 0px 25px 0px;
+}
+
+.container-right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    width: 360px;
+    height: 230px;
+    margin: 0 auto;
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, #53917E 35%, #175845 100%);
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 15px;
+}
+
+.intern {
+    padding: 20px;
+}
+
+.approximation {
+    position: relative;
+    width: 30px;
+    transform: rotate(90deg);
+    left: 84%;
+    top: 127px;
+}
+
+.chip {
+    height: 40px;
+    position: relative;
+    left: 70%;
+    bottom: 55px;
+}
+
+.card-number {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+}
+
+.card-holder {
+    color: whitesmoke;
+}
+
+.card label {
+    font-size: .7rem;
+}
+
+.card-infos {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    color: white;
+}
+
+#credit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.number-container, .name-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.expiration-container, .cvv-container {
+    width: 50%;
+}
+
+input {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #333333;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    outline: 0;
+    width: 90%;
+}
+
+input[type="text"]:focus {
+    border: 1px solid #53917E;
+}
+
+input#valid-thru-text, input#cvv-text {
+    width: 80%;
+}
+
+input[type="submit"] {
+    width: 95%;
+    background-color: #333333;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #53917E;
+}
+
+.infos-container {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .ui {
+        flex-direction: column-reverse;
+    }
+
+    .container-left, .container-right {
+        width: 100%;
+    }
+}
+
+.logoC {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 9%;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+    margin: 1% 0 0 1%;
+}

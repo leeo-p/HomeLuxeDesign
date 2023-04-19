@@ -13,31 +13,30 @@
         <script src="javascript/main.js"></script>
     </head>
     <body>
-        <section>
-            <div class="left">
-                <h1>HomeLuxeDesign</h1>
-                <h4>Accueil</h4>
-                <hr>
-                <h4>Nos produits</h4>
-                <ul>
-                    <li class="nav-button" id="salon" onclick="changeSection(this)"><a>Mobilier de Salon</a></li>
-                    <li class="nav-button" id="cuisine" onclick="changeSection(this)"><a>Mobilier de Cuisine</a></li>
-                    <li class="nav-button" id="sdb" onclick="changeSection(this)"><a>Mobilier SdB</a></li>
-                    <li class="nav-button" id="contact" onclick="changeSection(this)"><a>Contacts</a></li>
-                </ul>
-                <p>Pour vous connecter</p>
-                <a class="connexion" href="php/connexion.php">Connexion</a>
-            </div>
+        <section class="global-container">
             <div class="right">
-                <section class="to-change accueil visible">
-                    <h1>"HomeLuxeDesign, offrez du nouveau à votre intérieur !"</h1>
-                    <img src="img/salon3.webp" alt="image">
-                    <p>
-                        HomeLuxeDesign est une société spécialisée dans la vente de mobilier de luxe pour votre intérieur. Nous vous proposons un large choix de produits pour votre salon, votre cuisine et votre salle de bain. 
-                        Pour toutes informations complémentaires, n'hésitez pas à nous contacter via le formulaire de contact.
-                    </p>
+                <section class="to-change accueil" id="accueil">
+                    <div class="one">
+                        <h1>"HomeLuxeDesign, offrez du nouveau à votre intérieur !"</h1>
+                        <img src="img/accueil.jpg" alt="image">
+                        <p>
+                            HomeLuxeDesign est une société spécialisée dans la vente de mobilier de luxe pour votre intérieur. Nous vous proposons un large choix de produits pour votre salon, votre cuisine et votre salle de bain. 
+                            Pour toutes informations complémentaires, n'hésitez pas à nous contacter via le formulaire de contact.
+                        </p>
+                    </div>
+                    <div class="two">
+                        <!-- Si l'utilisateur se connecte ou s'inscrit : on affiche le bouton Déconnexion sinon Connexion -->
+                        <?php if (isset($_SESSION['login'])): ?>
+                            <h1>Bonjour <?=$_SESSION['login']?> !</h1>
+                            <a class="connexion" href="php/deconnexion.php">Déconnexion</a>
+                        <?php else: ?>
+                            <h1>Pour vous connecter</h1>
+                            <a class="connexion" href="php/connexion.php">Connexion</a>
+                        <?php endif ?>
+                    </div>
                 </section>
-                <section class="to-change salon">
+                <hr>
+                <section class="to-change salon" id="salon">
                     <h1>Mobilier de Salon</h1>
                     <table>
                         <?php foreach ($_SESSION['salon'] as $produit): ?>
@@ -46,10 +45,10 @@
                                 echo '<tr>';
                             }
                         ?>
-                            <td>
-                                <img src="<?php echo($produit[1]) ?>" alt="image" onclick="afficheImg(this)">
-                                <p> <?=$produit[2]?> <br><br>
-                                    Prix : <?=$produit[3]?> €
+                            <td data-id="<?= $produit[0] ?>" data-cat="salon">
+                                <img class="img_produit" src="<?php echo($produit[1]) ?>" alt="image" onclick="afficheImgSalon(this)">
+                                <p class="produit"> <?=$produit[2]?> <br><br><br><br><br>
+                                    <p class="prix"> Prix : <?=$produit[3]?> € </p>
                                 </p>
                                 <div class="quantite-container">
                                     <p class="stock">Stock : 10 </p>
@@ -59,7 +58,10 @@
                                         <button class="plus" onclick="ajusteQuantite(this, '+')">+</button>
                                     </div>
                                     <button class="afficheStock" onclick="afficherStock(this)">Stock</button>
-                                    <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
+                                    <!-- Si l'utilisateur est connecté le bouton apparait sinon non -->
+                                    <?php if (isset($_SESSION['login'])): ?>
+                                        <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
+                                    <?php endif ?>
                                 </div>
                             </td>
                         <?php 
@@ -70,7 +72,10 @@
                         <?php endforeach; ?>
                     </table>
                 </section>
-                <section class="to-change cuisine">
+                <img class="imgAgrandieSalon" src="" alt="image">
+                <p class="croixSalon" onclick="enleveImgSalon(this)">X</p>
+                <hr>
+                <section class="to-change cuisine" id="cuisine">
                     <h1>Mobilier de cuisine</h1>
                     <table>
                         <?php foreach ($_SESSION['cuisine'] as $produit): ?>
@@ -80,9 +85,9 @@
                             }
                         ?>
                         <td>
-                            <img src="<?=$produit[1]?>" alt="image" onclick="afficheImg(this)">
-                            <p> <?=$produit[2]?> <br><br>
-                            Prix : <?=$produit[3]?> €
+                            <img class="img_produit" src="<?=$produit[1]?>" alt="image" onclick="afficheImgCuisine(this)">
+                            <p class="produit"> <?=$produit[2]?> <br><br><br><br><br>
+                                <p class="prix"> Prix : <?=$produit[3]?> € </p>
                         </p>
                         <div class="quantite-container">
                             <p class="stock">Stock : 10 </p>
@@ -103,7 +108,10 @@
                         <?php endforeach; ?>
                     </table>
                 </section>
-                <section class="to-change sdb">
+                <img class="imgAgrandieCuisine" src="" alt="image">
+                <p class="croixCuisine" onclick="enleveImgCuisine(this)">X</p>
+                <hr>
+                <section class="to-change sdb" id="sdb">
                     <h1>Mobilier Salle de Bain</h1>
                     <table>
                         <?php foreach ($_SESSION['sdb'] as $produit): ?>
@@ -113,9 +121,9 @@
                             }
                         ?>
                         <td>
-                            <img src="<?=$produit[1]?>" alt="image" onclick="afficheImg(this)">
-                            <p> <?=$produit[2]?> <br><br>
-                                Prix :  <?=$produit[3]?> €
+                            <img class="img_produit" src="<?=$produit[1]?>" alt="image" onclick="afficheImgSdb(this)">
+                            <p class="produit"> <?=$produit[2]?> <br><br><br><br><br>
+                                <p class="prix"> Prix :  <?=$produit[3]?> € </p>
                             </p>
                             <div class="quantite-container">
                                 <p class="stock">Stock : 10 </p>
@@ -133,10 +141,14 @@
                                 echo '</tr>';
                             }
                         ?>
-                        <?php endforeach; ?>   
+                        <?php endforeach; ?>
                     </table>               
                 </section>
-                <section class="to-change contact">
+                <img class="imgAgrandieSdb" src="" alt="image">
+                <p class="croixSdb" onclick="enleveImgSdb(this)">X</p>
+                <hr>
+                <section class="to-change contact" id="contact">
+                    <h1>Contact</h1>
                     <form action="mailto:portetleo@cy-tech.fr" method="post" enctype="text/plain">
                         <label for="name">Nom</label>
                         <input type="text" id="name" name="name" placeholder="Votre nom" required>
@@ -166,29 +178,23 @@
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Votre email" required>
                         <label for="objet">Objet</label>
-                        <textarea id="objet" name="objet" placeholder="Votre objet" style="height:20px"></textarea>
+                        <textarea id="objet" name="objet" placeholder="Votre objet" style="max-height:20px"></textarea>
                         <label for="message">Contenu du mail</label>
-                        <textarea id="message" name="message" placeholder="Votre message" style="height:200px" required></textarea>
+                        <textarea id="message" name="message" placeholder="Votre message" style="max-height:100px" required></textarea>
                         <input type="submit" value="Envoyer">
                     </form>
                 </section>
-                <img class="imgAgrandie" src="" alt="image">
-                <p class="croix" onclick="enleveImg(this)">X</p>
                 <div class="contenuPanier">
                     <h3>Votre panier</h3>
                     <table class="tableauPanier">
                         <tr>
-                            <th>Produit</th>
-                            <th>Quantité</th>
-                            <th>Prix</th>
                         </tr>
                     </table>
-                    <p class="total">Total : 0 €</p>
-                    <!-- Les fonctions viderPanier() et commander() ne sont pas encore définies -->
                     <button class="viderPanier" onclick="viderPanier(this)">Vider le panier</button>
-                    <button class="commander" onclick="commander(this)">Commander</button>
+                    <a href="php/payement.php"><button class="commander">Commander</button></a>
                 </div>
             </div>
         </section>
+        <button class="backToTop"><img src="../img/fleche.png" alt=""></button>
     </body>
 </html>

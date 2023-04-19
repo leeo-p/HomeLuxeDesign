@@ -17,21 +17,29 @@
             <h1>HomeLuxeDesign</h1>
             <nav>
                 <ul>
-                    <li class="nav-button actif" id="accueil" onclick="changeSection(this)"><a>Accueil</a></li>
-                    <li class="nav-button" id="salon" onclick="changeSection(this)"><a>Mobilier de Salon</a></li>
-                    <li class="nav-button" id="cuisine" onclick="changeSection(this)"><a>Mobilier de Cuisine</a></li>
-                    <li class="nav-button" id="sdb" onclick="changeSection(this)"><a>Mobilier SdB</a></li>
-                    <li class="nav-button" id="contact" onclick="changeSection(this)"><a>Contacts</a></li>
+                    <a href="#accueil"><li class="nav-button actif" onclick="changeSection(this)">Accueil</li></a>
+                    <a href="#salon"><li class="nav-button" onclick="changeSection(this)">Mobilier de Salon</li></a>
+                    <a href="#cuisine"><li class="nav-button" onclick="changeSection(this)">Mobilier de Cuisine</li></a>
+                    <a href="#sdb"><li class="nav-button" onclick="changeSection(this)">Mobilier SdB</li></a>
+                    <a href="#contact"><li class="nav-button" onclick="changeSection(this)">Contacts</li></a>
                 </ul>
             </nav>
             <div class="box">
                 <form name="search">
-                    <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();"> <!-- blur() pour enlever le focus du champs texte -->
+                    <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();"  onkeyup="checkEntrer(event)"> <!-- blur() pour enlever le focus du champs texte -->
                     <img src="img/chercher.png" alt="searchbar">
                 </form>
                 <i class="fas fa-search"></i>
             </div>
-            <img class="iconPanier" src="img/panier.webp" alt="panier" onclick="afficherPanier(this)">
+            <!-- Si l'utilisateur est connecté on affiche le panier sinon on redirige sur la page de connexion -->  
+            <?php
+                if (isset($_SESSION['login'])) {
+                    echo '<img class="iconPanier" src="img/panier.webp" alt="panier" onclick="afficherPanier(this)">';
+                } else {
+                    echo '<a href="php/connexion.php"><img class="iconPanier" src="img/panier.webp" alt="panier"></a>';
+                }     
+            ?>
+            <!-- <img class="iconPanier" src="img/panier.webp" alt="panier" onclick="afficherPanier(this)"> -->
         </header>
     </body>
 </html>

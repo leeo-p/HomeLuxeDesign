@@ -12,6 +12,7 @@
         <script src="javascript/main.js"></script>
     </head>
     <body>
+        <hr>
         <footer>
             <p class="copyright">HomeLuxeDesign © 2023 tous droits réservés</p>
             <div class="reseaux">

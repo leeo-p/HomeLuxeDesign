@@ -8,25 +8,31 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Propriétés de la page */
 body {
+    background-color: #fff;
     position: relative;
     font-family: 'bitter', sans-serif;
     width: 100%;
-    height: 100vh;
+    height: 500vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 /* Propriétés du header */
 header {
+    background-color: #071108;
     position: relative;
-    color: #071108;
+    color: #fff;
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 20%;
+    height: 4.5%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -43,10 +49,10 @@ header .logo {
     position: absolute;
     left: 0;
     top: 0;
-    width: 8%;
+    width: 9%;
     aspect-ratio: 1/1;
     border-radius: 100px;
-    border: 4px solid #dfbb00;
+    border: 2px solid #fff;
     margin: 1% 0 0 1%;
 }
 /* Propriétés du panier */
@@ -57,6 +63,9 @@ header .iconPanier {
     width: 2.5%;
     aspect-ratio: 1/1;
     margin: 1% 1% 0 0;
+    background-color: #fff;
+    border-radius: 100%;
+    padding-bottom: 2px;
 }
 header .iconPanier:hover {
     cursor: pointer;
@@ -72,10 +81,11 @@ nav {
     align-items: center;
     margin: 0;
     padding: 0;
+    z-index: 99;
 }
 nav ul {
-    border: 1px solid #071108;
-    background-color: #071108;
+    border: 1px solid #fff;
+    background-color: #fff;
     border-radius: 45px;
     padding: 3px 3px 3px 3px;
     margin: 0;
@@ -87,20 +97,22 @@ nav ul li {
     min-width: 18ch;
     height: 4ch;
     text-align: center;
-    border: 2px solid #dfbb00;
+    border: 2px solid #53917E;
     border-radius: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #000;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
-nav ul li a {
+nav a {
     text-decoration: none;
+    color: #fff;
 }
 li:hover {
-    background-color: #dfbb00;
-    color: #071108;
+    background-color: #53917E;
+    color: #fff;
     cursor: pointer;
 }
 
@@ -111,53 +123,12 @@ p {
 }
 
 /* Propriétés du corps du site */
-section {
+.global-container {
     position: relative;
-    margin: 0;
-    height: 70%;
+    height: 94.1%;
     display: flex;
 }
-/* Propriétés de la partie left */
-.left {
-    width: 20%;
-    margin: 0;
-    height: 100%;
-    border-top: 3px solid #dfbb00;
-    border-right: 3px solid #dfbb00;
-    border-bottom: 3px solid #dfbb00;
-    border-radius: 20px;
-}
-.left > *:not(ul) {
-    text-align: center;
-}
-.left ul li a {
-    text-decoration: none;
-}
-.left p {
-    margin: 50% 0 0 0;
-    padding: 0;
-}
-.left .connexion {
-    position: relative;
-    display: block;
-    padding: 1%;
-    margin: 1% auto 0 auto;
-    background-color: #000;
-    border-radius: 40px;
-    color: #dfbb00;
-    height: 2.5ch;
-    font-style: bold;
-    text-decoration: none;
-    width: 50%;
-}
-.left ul {
-    list-style: none;
-}
-.left ul li {
-    width: 80%;
-    border-radius: 10px;
-    text-align: center;
-}
+
 /* Propriétés de la partie right */
 .right {
     position: relative;
@@ -165,55 +136,151 @@ section {
     margin: 0;
     width: 100%;
     height: 100%;
-    border-top: 3px solid #dfbb00;
-    border-bottom: 3px solid #dfbb00;
-    border-radius: 20px;
 }
-.right .imgAgrandie {
+.right .imgAgrandieSalon {
     position: absolute;
     object-fit: cover;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 700px;
-    height: 600px;
+    height: 700px;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -18%);
     display: none;
 }
-.right .croix {
+.right .imgAgrandieCuisine {
+    position: absolute;
+    object-fit: cover;
+    width: 700px;
+    height: 700px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -18%);
+    display: none;
+}
+.right .imgAgrandieSdb {
+    position: absolute;
+    object-fit: cover;
+    width: 700px;
+    height: 700px;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -18%);
+    display: none;
+}
+.right .croixSalon {
     position: absolute;
     text-align: center;
     padding-top: 2px;
-    font-size: 24px;
+    font-size: 25px;
+    font-style: bold;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    top: 25%;
-    right: 25%;
-    transform: translate(100%, -450%);
+    top: 25.5%;
+    left: 61.5%;
+    transform: translate(10%, -450%);
     width: 30px;
     height: 30px;
     background-color: black;
     border-radius: 50%;
     display: none;
 }
-.right .croix:hover {
+.right .croixCuisine {
+    position: absolute;
+    text-align: center;
+    padding-top: 2px;
+    font-size: 25px;
+    font-style: bold;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 45.5%;
+    left: 61.5%;
+    transform: translate(10%, -450%);
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 50%;
+    display: none;
+}
+.right .croixSdb {
+    position: absolute;
+    text-align: center;
+    padding-top: 2px;
+    font-size: 25px;
+    font-style: bold;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 65.5%;
+    left: 61.5%;
+    transform: translate(10%, -450%);
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 50%;
+    display: none;
+}
+.right .croixSalon:hover {
+    cursor: pointer;
+}
+.right .croixCuisine:hover {
+    cursor: pointer;
+}
+.right .croixSdb:hover {
     cursor: pointer;
 }
 .right img {
-    width: 45%;
+    width: 70%;
     border-radius: 15px;
 }
 .right p {
     text-align: left;
     margin: 0 5% 0 5%;
 }
+
+/* Propriétés accueil */
+.right .accueil {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.right .accueil .one {
+    width: 85%;
+}
+.right .accueil .two {
+    border: 2px solid #53917E;
+    border-radius: 15px;
+    padding: 100px;
+    margin-right: 8%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right .accueil .two a {
+    text-decoration: none;
+    color: #000;
+}
+.right .accueil .two .connexion {
+    width: 70%;
+    height: 3ch;
+    padding-top: 0.5ch;
+    border-radius: 40px;
+    background-color: #53917E;
+}
+.right .accueil .two .connexion:hover {
+    background-color: #175845;
+    color: #fff;
+    cursor: pointer;
+}
+
 /* Propriétés du formulaire */
 .right .contact form {
-    margin-left: 25%;
-    margin-top: 1%;
     padding: 1% 2% 1% 2%;
     display: flex;
     flex-direction: column;
-    height: 135%;
+    height: 80%;
     width: 50%;
     background: rgb(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -221,17 +288,16 @@ section {
 .right .contact form input, .right .contact form select {
     width: 25%;
     height: 4ch;
-    border: 1px solid #dfbb00;
+    border: 1px solid #53917E;
     border-radius: 5px;
     background: transparent;
     outline: none;
 
 }
-
 .right .contact form textarea {
     max-width: 100%;
     height: 10ch;
-    border: 1px solid #dfbb00;
+    border: 1px solid #53917E;
     border-radius: 5px;
 }
 .right .contact form label{
@@ -243,13 +309,17 @@ section {
 .right .contact form input[type="submit"] {
     width: 10%;
     height: 4ch;
-    border: 1px solid #dfbb00;
+    border: 1px solid #53917E;
     border-radius: 5px;
-    background-color: #dfbb00;
+    background-color: #53917E;
     color: #071108;
     margin-left: 90%;
 }
-
+.right .contact form input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #071108;
+    color: #53917E;
+}
 
 /* Propriétés du footer */
 footer {
@@ -302,19 +372,26 @@ footer .reseaux img {
 
 /* Propriétés du hr */
 hr {
-    color: #ffd500;
+    margin: 0;
+    color: #53917E;
+    width: 50%;
+    margin-left: 25%;
+    border: 3px solid;
+    border-radius: 100%;
 }
 
 /* Propriétés des sections changeantes */
 .actif {
-    background-color: #dfbb00;
-    color: #071108;
+    background-color: #175845;
+    border-color: #175845;
+    color: #fff;
 }
 .to-change {
-    display: none;
-}
-.visible {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
 }
 
 /* Propriétés tableau d'articles */
@@ -343,17 +420,37 @@ td .quantite-container {
 .quantite-container .afficheStock {
     width: 130px;
     padding: 0.5ch;
-    background-color: #071108;
+    background-color: #aaa;
     border-radius: 20px;
-    border: solid 2px #dfbb00;
-    color: white;
+    border: solid 1px #aaa;
+    color: #000;
     font-size: 14px;
     cursor: pointer;
 }
+.quantite-container .panier:hover,
+.quantite-container .afficheStock:hover {
+    background-color: #175845;
+    color: #fff;
+}
+
 .quantite-container .choix {
     display: flex;
     width: 130px;
     justify-content: center;
+}
+.quantite-container .choix button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 20%;
+    background-color: #53917E;
+    color: #000;
+    font-size: 14px;
+    cursor: pointer;
+}
+.quantite-container .choix button:hover {
+    background-color: #175845;
+    color: #fff;
 }
 .quantite {
     width: 30px;
@@ -362,7 +459,7 @@ td .quantite-container {
 td img {
     aspect-ratio: 1/1;
     object-fit: cover;
-    min-width: 270px;
+    min-width: 350px;
     transition: 150ms ease-out;
 }
 td:hover p:not(.stock) {
@@ -396,209 +493,114 @@ td p:not(.stock) {
     align-items: center;
     position: absolute;
     width: 50%;
-    height: 90%;
-    top: 5%;
-    left: 2.5%;
-    border: 3px solid #dfbb00;
+    height: 14%;
+    top: 1%;
+    left: 25%;
+    border: 3px solid #53917E;
     border-radius: 20px;
     background: rgb(0, 0, 0, 0.1);
-}
-.contenuPanier .total,
-.contenuPanier .viderPanier, 
-.contenuPanier .commander {
-    position: absolute;
-    bottom: 2%;
-}
-.contenuPanier .commander,
-.contenuPanier .total {
-    right: 5%;
+    overflow: scroll;
 }
 .contenuPanier .total {
-    bottom: 8%;
-    transform: translateX(50%);
+    position: fixed;
+    left: 48%;
+    bottom: 20%;
 }
 .contenuPanier .viderPanier {
+    position: absolute;
     left: 5%;
+    top: 5%;
     width: 130px;
     padding: 0.5ch;
-    background-color: #071108;
+    background-color: #53917E;
     border-radius: 20px;
-    border: solid 2px #dfbb00;
+    border: 0;
     color: white;
     font-size: 14px;
     cursor: pointer;
 }
 .contenuPanier .commander {
+    position: absolute;
+    right: 5%;
+    top: 5%;
     width: 130px;
     padding: 0.5ch;
-    background-color: #071108;
+    background-color: #53917E;
     border-radius: 20px;
-    border: solid 2px #dfbb00;
+    border: 0;
     color: white;
     font-size: 14px;
     cursor: pointer;
 }
 
 /* Propriétés de recherche */
-.box{
+.box {
     position: absolute;
     right: 5%;
-    top: 13%;
+    top: 9.5%;
 }
 .box img {
     position: absolute;
     right: 23%;
     top: 22%;
-    width: 22px;
+    width: 26px;
     aspect-ratio: 1/1;
 }
 .input {
     padding: 10px;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: 3px solid #dfbb00;
-    border-radius: 50px;
+    width: 48px;
+    height: 48px;
+    background-color: #fff;
+    border-radius: 100%;
     box-sizing: border-box;
     font-family: Comic Sans MS;
     font-size: 16px;
-    color: #ffd52d;
+    color: #fff;
     outline: none;
     transition: 0.7s;
 }
-.box:hover .input{
+.box:hover .input {
     width: 250px;
-    background: #3b3640;
+    background: #53917E;
     border-radius: 10px;
 }
 .box:hover img {
     display: none;
 }
 
-.box i{
+.box i {
     position: absolute;
     top: 50%;
     right: 15px;
     transform: translate(-50%,-50%);
     font-size: 26px;
-    color: #ffd52d;
+    color: #53917E;
     transition: .2s;
 }
-.box:hover i{
+.box:hover i {
     opacity: 0;
     z-index: -1;
 }
 
-
-
-
-/*-----------Page de connexion----------*/
-.login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    height: 450px;
-    padding: 40px;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
-    box-sizing: border-box;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8);
-    border-radius: 30px;
-}
-.login-box h2 {
-    font-size: 32px;
-    margin: 0 0 50px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-}
-.login-box .user-box {
-    position: relative;
-}
-.login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 20px;
-    margin-top: 40px;
+/* Propriétés bouton retour haut de page */
+.backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
     border: none;
-    border-bottom: 1px solid #fff;
     outline: none;
-    background: transparent;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: none;
+    background: none;
 }
-.login-box .user-box label {
-    position: absolute;
-    margin-top: 20px;
-    top: 0;
-    left: 0;
-    padding: 5px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .4s;
-}
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-    top: -15px;
-    left: 0;
-    color: #dfbb00;
-    background: rgba(0, 0, 0, 0.5);
-    padding-left: 12px;
-    padding-right: 12px;
-    border-radius: 30px;
-    font-size: 14px;
-}
-.login-box form .submit {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: black;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .3s;
-    margin-top: 40px;
-    margin-left: 390px;
-    letter-spacing: 3px;
-}
-.login-box .submit:hover {
-    background: #071108;
-    color: #dfbb00;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #dfbb00,
-    0 0 15px #dfbb00,
-    0 0 25px #dfbb00,
-    0 0 35px #dfbb00;
-}
-
-.logoC {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 8%;
+.backToTop img {
     aspect-ratio: 1/1;
-    border-radius: 100px;
-    border: 4px solid #dfbb00;
-    margin: 1% 0 0 1%;
-}
-
-.titrePDC {
-    margin: 0;
-    padding: 2% 0 0 0;
-    width: 100%;
-    text-align: center;
-}
-
-.fond {
-    margin: 0;
-    padding: 0;
-    top: 0;
-    transform: translateY(-25%);
-    position: absolute;
-    width: 100%;
-    aspect-ratio: 1.3/1;
-    opacity: 0.3;
-    z-index: -999;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
