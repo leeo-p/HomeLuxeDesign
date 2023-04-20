@@ -142,7 +142,7 @@ p {
     object-fit: cover;
     width: 700px;
     height: 700px;
-    top: 25%;
+    top: 25.5%;
     left: 50%;
     transform: translate(-50%, -18%);
     display: none;
@@ -152,7 +152,7 @@ p {
     object-fit: cover;
     width: 700px;
     height: 700px;
-    top: 45%;
+    top: 45.5%;
     left: 50%;
     transform: translate(-50%, -18%);
     display: none;
@@ -162,7 +162,7 @@ p {
     object-fit: cover;
     width: 700px;
     height: 700px;
-    top: 65%;
+    top: 65.5%;
     left: 50%;
     transform: translate(-50%, -18%);
     display: none;
@@ -175,7 +175,7 @@ p {
     font-style: bold;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    top: 25.5%;
+    top: 26%;
     left: 61.5%;
     transform: translate(10%, -450%);
     width: 30px;
@@ -192,7 +192,7 @@ p {
     font-style: bold;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    top: 45.5%;
+    top: 46%;
     left: 61.5%;
     transform: translate(10%, -450%);
     width: 30px;
@@ -209,7 +209,7 @@ p {
     font-style: bold;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    top: 65.5%;
+    top: 66%;
     left: 61.5%;
     transform: translate(10%, -450%);
     width: 30px;
