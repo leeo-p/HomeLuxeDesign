@@ -19,7 +19,7 @@
                 if (isset($_POST['login']) && isset($_POST['password'])) {
                     $login = $_POST['login'];
                     $password = $_POST['password'];
-                    $bdd = new PDO('mysql:host=localhost;dbname=homeluxedesign;charset=utf8', 'root', 'eithooghoi9%W');
+                    $bdd = new PDO('mysql:host=localhost;dbname=homeluxedesign;charset=utf8', 'root', '');
                     
                     // Vérifier si l'utilisateur existe déjà dans la base de données
                     $existingUser = $bdd->prepare('SELECT * FROM users WHERE login = :login');

@@ -39,7 +39,6 @@
                     echo '<a href="php/connexion.php"><img class="iconPanier" src="img/panier.webp" alt="panier"></a>';
                 }     
             ?>
-            <!-- <img class="iconPanier" src="img/panier.webp" alt="panier" onclick="afficherPanier(this)"> -->
         </header>
     </body>
 </html>
