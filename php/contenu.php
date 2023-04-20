@@ -97,7 +97,10 @@
                                     <button class="plus" onclick="ajusteQuantite(this, '+')">+</button>
                                 </div>
                                 <button class="afficheStock" onclick="afficherStock(this)">Stock</button>
-                                <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
+                                <!-- Si l'utilisateur est connecté le bouton apparait sinon non -->
+                                <?php if (isset($_SESSION['login'])): ?>
+                                    <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
+                                <?php endif ?>                            
                             </div>
                         </td>
                         <?php 
@@ -133,7 +136,10 @@
                                     <button class="plus" onclick="ajusteQuantite(this, '+')">+</button>
                                 </div>
                                 <button class="afficheStock" onclick="afficherStock(this)">Stock</button>
-                                <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
+                                <!-- Si l'utilisateur est connecté le bouton apparait sinon non -->
+                                <?php if (isset($_SESSION['login'])): ?>
+                                    <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
+                                <?php endif ?>                           
                             </div>
                         </td>
                         <?php 
