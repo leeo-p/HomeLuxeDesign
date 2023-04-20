@@ -586,13 +586,12 @@ td p:not(.stock) {
 .backToTop {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 5px;
+    right: 5px;
     z-index: 99;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 15px;
     border-radius: 50%;
     background-color: none;
     background: none;
@@ -604,3 +603,4 @@ td p:not(.stock) {
     height: 50px;
     border-radius: 50%;
 }
+
