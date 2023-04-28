@@ -1,14 +1,24 @@
+-- Supprimer la base de données si elle existe déjà
+DROP DATABASE IF EXISTS homeluxedesign;
+
+-- Créer la base de données
 CREATE DATABASE homeluxedesign;
 
+-- Utiliser la base de données
 USE homeluxedesign;
 
-CREATE TABLE users {
+-- Supprimer la table si elle existe déjà
+DROP TABLE IF EXISTS users;
+
+-- Créer la table users
+CREATE TABLE users (
     login VARCHAR(255),
     password VARCHAR(255),
-    PRIMARY KEY login,
-};
+    id INTEGER,
+    PRIMARY KEY (login)
+);
 
-INSERT INTO users VALUES ('admin', 'admin');
-INSERT INTO users VALUES ('user', 'password');
-
+-- Insérer des données dans la table users
+INSERT INTO users VALUES ('admin', 'admin', '1');
+INSERT INTO users VALUES ('user', 'password', '2');
 

@@ -31,7 +31,7 @@
                         echo '<p class="error">Cet utilisateur existe déjà.</p>';
                     } else {
                         // Si l'utilisateur n'existe pas, l'ajouter à la base de données
-                        $req = $bdd->prepare('INSERT INTO users (login, password) VALUES (:login, :password)');
+                        $req = $bdd->prepare('INSERT INTO users (login, password, id) VALUES (:login, :password, 2)');
                         $req->execute([
                             'login' => $login,
                             'password' => $password

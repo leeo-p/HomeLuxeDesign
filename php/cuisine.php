@@ -1,0 +1,41 @@
+<?php
+    session_start();
+    include 'varSession.inc.php';
+?>
+
+<section class="to-change cuisine" id="cuisine">
+    <h1>Mobilier de cuisine</h1>
+    <table>
+        <?php foreach ($_SESSION['cuisine'] as $produit): ?>
+        <?php 
+            if ($produit[0] == 1 || $produit[0] == 4) {
+                echo '<tr>';
+            }
+        ?>
+        <td>
+            <img class="img_produit" src="<?=$produit[1]?>" alt="image" onclick="afficheImgCuisine(this)">
+            <p class="produit"> <?=$produit[2]?> <br><br><br><br><br>
+                <p class="prix"> Prix : <?=$produit[3]?> € </p>
+            </p>
+            <div class="quantite-container">
+                <p class="stock">Stock : 10 </p>
+                <div class="choix">
+                    <button class="moins" onclick="ajusteQuantite(this, '-')">-</button>
+                    <input type="text" value="0" min="0" max="10 "class="quantite">
+                    <button class="plus" onclick="ajusteQuantite(this, '+')">+</button>
+                </div>
+                <button class="afficheStock" onclick="afficherStock(this)">Stock</button>
+                <!-- Si l'utilisateur est connecté le bouton apparait sinon non -->
+                <?php if (isset($_SESSION['login'])): ?>
+                    <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
+                <?php endif ?>                            
+            </div>
+        </td>
+        <?php 
+            if ($produit[0] == 3 || $produit[0] == 6) {
+                echo '</tr>';
+            }
+        ?>
+        <?php endforeach; ?>
+    </table>
+</section>
