@@ -118,7 +118,14 @@ function ajoutPanier(e) {
     if (qte == 0) {
         return;
     }
-
+    // Si l'article à déja été ajouté on augmente juste la quantité sinon on ajoute l'article
+    if (contenu.querySelector('.imgPanier[src="' + img + '"]')) {
+        const quantite = contenu.querySelector('.imgPanier[src="' + img + '"]').parentElement.querySelector('.quantitePanier');
+        const qtePanier = parseInt(quantite.innerHTML.split(' ')[2]);
+        quantite.innerHTML = 'Quantité : ' + (qtePanier + parseInt(qte));
+        alert("L'article a bien été ajouté !")
+        return;
+    }
     const imgPanier = document.createElement('img');           // Crée une image
     imgPanier.classList.add('imgPanier');                      // Ajoute la classe .imgPanier à l'image
     imgPanier.src = img;                                       // Change l'image de l'image du produit
@@ -135,6 +142,8 @@ function ajoutPanier(e) {
     fetch("../json/cat.json")
         .then(response => response.json())
         .then(data => {
+            // afficher data dans la console
+            console.log(data);
             let colonne;
             for (const c in data[produit.dataset.cat]) {
                 if (c.id == produit.dataset.id) {

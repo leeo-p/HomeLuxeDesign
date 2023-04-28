@@ -19,12 +19,19 @@
             </p>
             <div class="quantite-container">
                 <p class="stock">Stock : 10 </p>
-                <div class="choix">
-                    <button class="moins" onclick="ajusteQuantite(this, '-')">-</button>
-                    <input type="text" value="0" min="0" max="10 "class="quantite">
-                    <button class="plus" onclick="ajusteQuantite(this, '+')">+</button>
-                </div>
-                <button class="afficheStock" onclick="afficherStock(this)">Stock</button>
+                <?php if (isset($_SESSION['login'])): ?>
+                    <div class="choix">
+                        <button class="moins" onclick="ajusteQuantite(this, '-')">-</button>
+                        <input type="text" value="0" min="0" max="10 "class="quantite">
+                        <button class="plus" onclick="ajusteQuantite(this, '+')">+</button>
+                    </div>
+                <?php endif ?>
+
+                <!-- Si l'utilisateur est admin on affiche le bouton stock -->
+                <?php if (isset($_SESSION['login']) && $_SESSION['password'] == 'admin'): ?>
+                    <button class="afficheStock" onclick="afficherStock(this)">Stock</button>
+                <?php endif ?>
+                
                 <!-- Si l'utilisateur est connecté le bouton apparait sinon non -->
                 <?php if (isset($_SESSION['login'])): ?>
                     <button class="panier" onclick="ajoutPanier(this)">Ajouter au panier</button>
