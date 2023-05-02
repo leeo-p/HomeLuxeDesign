@@ -107,6 +107,7 @@ function afficherPanier(e) {
 /* Fonction pour ajouter un article au panier */
 function ajoutPanier(e) {
     const produit = e.parentElement.parentElement;             // Sélectionne le produit
+    const categorie = produit.dataset.cat;                     // On récupère la catégorie du produit
     const qte = produit.querySelector('.quantite').value;      // Sélectionne la quantité du produit
     const img = produit.querySelector('.img_produit').src;     // Sélectionne l'image du produit
     const panier = document.querySelector('.contenuPanier');   // Sélectionne le panier
@@ -143,25 +144,36 @@ function ajoutPanier(e) {
         .then(response => response.json())
         .then(data => {
             // afficher data dans la console
-            console.log(data);
             let colonne;
-            for (const c in data[produit.dataset.cat]) {
-                if (c.id == produit.dataset.id) {
-                    colonne = c;
-                    console.log(colonne)
-                }
-            }
+            // Boucler sur tous les articles de toutes les catégories
+            Object.keys(data).forEach(cat => {
+                data[cat].forEach(article => {
+                    if (article.id === +produit.dataset.id) {
+                        console.log(article.prix)
+
+                        colonne = article;
+                    }
+                });
+            });
+
+            if (categorie === 'cuisine') {
+                colonne = data.cuisine.find(a => a.id === + produit.dataset.id);
+            } else if (categorie === 'sdb') {
+                colonne = data.sdb.find(a => a.id === + produit.dataset.id);
+            } else if (categorie === 'salon') {
+                colonne = data.salon.find(a => a.id === + produit.dataset.id);
+            } 
 
             if (colonne === undefined) {
                 return;
             }
 
             // colonne c’est ton objet javascript qui contient id, prix, …
-            const prixTotal = colonne.prix * qte;
             const total = document.createElement('p');
             total.classList.add('total');
-            total.innerHTML = 'Total : ' + prixTotal + '€';
+            total.innerHTML = 'Total : ' + (prixTotal+colonne.prix*qte) + '€';
             produitPanier.appendChild(total);
+            prixTotal = colonne.prix*qte;
     });
     alert("L'article a bien été ajouté !")
 }

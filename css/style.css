@@ -502,9 +502,9 @@ td p:not(.stock) {
     overflow: scroll;
 }
 .contenuPanier .total {
-    position: fixed;
-    left: 48%;
-    bottom: 20%;
+    position: absolute;
+    right: 0%;
+    bottom: 13%;
 }
 .contenuPanier .viderPanier {
     position: absolute;
