@@ -127,6 +127,7 @@ function ajoutPanier(e) {
         alert("L'article a bien été ajouté !")
         return;
     }
+    
     const imgPanier = document.createElement('img');           // Crée une image
     imgPanier.classList.add('imgPanier');                      // Ajoute la classe .imgPanier à l'image
     imgPanier.src = img;                                       // Change l'image de l'image du produit
