@@ -104,6 +104,25 @@ function afficherPanier(e) {
     }
 }
 
+/* Fonction pour supprimer un article du panier */
+function supprimerArticlePanier(e) {
+    const produit = e.parentElement.parentElement;              // Sélectionne le produit
+    const contenu = produit.parentElement;                      // Sélectionne le contenu du panier
+    const valeur = parseInt(total.innerHTML.split(' ')[2]);     // Récupère la valeur du total
+    const prix = parseInt(produit.querySelector('.total').innerHTML.split(' ')[2]); // Récupère le prix de l'article
+    const previousPrice = document.querySelector('.total');
+    if (previousPrice) {
+        valeur = +previousPrice.outerHTML.split('>')[1].split(' ')[2].split('€')[0];
+        previousPrice.remove();
+    } else {
+        valeur = 0;
+    }
+    const total = document.createElement('p');
+    total.classList.add('total');
+    total.innerHTML = 'Total : ' + (valeur-prix) + '€';         // Change le total
+    produit.remove();                                           // Supprime le produit
+}
+
 /* Fonction pour ajouter un article au panier */
 function ajoutPanier(e) {
     const produit = e.parentElement.parentElement;             // Sélectionne le produit
@@ -124,6 +143,9 @@ function ajoutPanier(e) {
         .then(response => response.json())
         .then(data => {
             let colonne;
+            const previousPrice = document.querySelector('.total');
+            const total = document.createElement('p');
+
             if (categorie === 'cuisine') {
                 colonne = data.cuisine.find(a => a.id === +produit.dataset.id);
             } else if (categorie === 'sdb') {
@@ -132,44 +154,49 @@ function ajoutPanier(e) {
                 colonne = data.salon.find(a => a.id === +produit.dataset.id);
             }
 
-
             if (colonne === undefined) {
                 return;
             }
-            const previousPrice = document.querySelector('.total');
+
             if (previousPrice) {
                 valeur = +previousPrice.outerHTML.split('>')[1].split(' ')[2].split('€')[0];
                 previousPrice.remove();
             } else {
                 valeur = 0;
             }
-                // Si l'article à déja été ajouté on augmente juste la quantité sinon on ajoute l'article
+            // Si l'article à déja été ajouté on augmente juste la quantité sinon on ajoute l'article
             if (contenu.querySelector('.imgPanier[src="' + img + '"]')) {
-                // Ajoute l'image au div
                 contenu.appendChild(produitPanier);  
-
                 const quantite = contenu.querySelector('.imgPanier[src="' + img + '"]').parentElement.querySelector('.quantitePanier');
                 const qtePanier = parseInt(quantite.innerHTML.split(' ')[2]);
                 quantite.innerHTML = 'Quantité : ' + (qtePanier + parseInt(qte));
             } else {
-                                // On ajoute la qauntité commandé au panier
                 const imgPanier = document.createElement('img');           // Crée une image
                 imgPanier.classList.add('imgPanier');                      // Ajoute la classe .imgPanier à l'image
                 imgPanier.src = img;                                       // Change l'image de l'image du produit
                 produitPanier.appendChild(imgPanier);                      // Ajoute l'image au div
-                contenu.appendChild(produitPanier);    
-                                    // Ajoute le div au contenu du panier
-                const quantite = document.createElement('p');
-                quantite.classList.add('quantitePanier');
-                quantite.innerHTML = 'Quantité : ' + qte;
-                produitPanier.appendChild(quantite);
+                contenu.appendChild(produitPanier); 
+                const poubelle = document.createElement('img');
+                poubelle.classList.add('poubelle');
+                poubelle.src = '../img/trash.png';
+                produitPanier.appendChild(poubelle);
+                poubelle.addEventListener('click', supprimerArticlePanier);
+                    
+                    total.classList.add('total');
+                    total.innerHTML = 'Total : ' + (valeur-colonne.prix*qte) + '€';
+                    produitPanier.appendChild(total);
+                }; 
 
-            }
-            const total = document.createElement('p');
+            // Ajoute le div au contenu du panier
+            const quantite = document.createElement('p');
+            quantite.classList.add('quantitePanier');
+            quantite.innerHTML = 'Quantité : ' + qte;
+            produitPanier.appendChild(quantite);
             total.classList.add('total');
             total.innerHTML = 'Total : ' + (valeur+colonne.prix*qte) + '€';
             produitPanier.appendChild(total);
     });
+    console.log(categorie);
     alert("L'article a bien été ajouté !")
 }
 

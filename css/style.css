@@ -503,7 +503,7 @@ td p:not(.stock) {
 }
 .contenuPanier .total {
     position: absolute;
-    right: 0%;
+    right: -3%;
     bottom: 13%;
 }
 .contenuPanier .viderPanier {
@@ -531,6 +531,10 @@ td p:not(.stock) {
     color: white;
     font-size: 14px;
     cursor: pointer;
+}
+.contenuPanier .poubelle {
+    aspect-ratio: 1/1;
+    width: 4%;
 }
 
 /* Propriétés de recherche */
@@ -603,4 +607,3 @@ td p:not(.stock) {
     height: 50px;
     border-radius: 50%;
 }
-

@@ -12,7 +12,7 @@
                 echo '<tr>';
             }
         ?>
-        <td>
+        <td data-id="<?= $produit[0] ?>" data-cat="cuisine">
             <img class="img_produit" src="<?=$produit[1]?>" alt="image" onclick="afficheImgCuisine(this)">
             <p class="produit"> <?=$produit[2]?> <br><br><br><br><br>
                 <p class="prix"> Prix : <?=$produit[3]?> € </p>

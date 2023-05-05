@@ -1,21 +1,22 @@
-USE homeluxedesign; -- Sélectionne la base de données
+-- Sélectionne la base de données
+USE homeluxedesign;
 
 -- Supprimer la table si elle existe déjà
 DROP TABLE IF EXISTS produits;
 
 -- Table "produits"
 CREATE TABLE produits (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,  -- Champ pour l'ID du produit
-    img VARCHAR(255) NOT NULL,                      -- Champ pour le chemin de l'image
-    nom VARCHAR(255) NOT NULL,                      -- Champ pour le nom du produit
-    prix INT(6) NOT NULL                            -- Champ pour le prix du produit
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,              -- Champ pour l'ID du produit
+    img VARCHAR(255) NOT NULL,                                  -- Champ pour le chemin de l'image
+    nom VARCHAR(255) NOT NULL,                                  -- Champ pour le nom du produit
+    prix INT(6) NOT NULL                                        -- Champ pour le prix du produit
 );
 
 -- Parcours du fichier JSON pour insérer les données dans la table
-SET @json = LOAD_FILE('/path/to/products.json');    -- Charge le contenu du fichier JSON dans une variable
-SET @salon = JSON_EXTRACT(@json, '$.salon');        -- Extrait la liste des produits de la catégorie "salon"
-SET @cuisine = JSON_EXTRACT(@json, '$.cuisine');    -- Extrait la liste des produits de la catégorie "cuisine"
-SET @sdb = JSON_EXTRACT(@json, '$.sdb');            -- Extrait la liste des produits de la catégorie "sdb"
+SET @json = LOAD_FILE('/path/to/products.json');                -- Charge le contenu du fichier JSON dans une variable
+SET @salon = JSON_EXTRACT(@json, '$.salon');                    -- Extrait la liste des produits de la catégorie "salon"
+SET @cuisine = JSON_EXTRACT(@json, '$.cuisine');                -- Extrait la liste des produits de la catégorie "cuisine"
+SET @sdb = JSON_EXTRACT(@json, '$.sdb');                        -- Extrait la liste des produits de la catégorie "sdb"
 
 -- Insertion des produits de la catégorie "salon"
 SET @i = 0;                                                     -- Initialise un compteur pour l'ID du produit
