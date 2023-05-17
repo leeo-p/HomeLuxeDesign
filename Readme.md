@@ -1,37 +1,35 @@
 # Projet Developpement Web
 
-## Rendu TP3
+## Rendu TP Final
 
 ---
 
-### Ce qui a été réalisé
+### Ce qui a été réalisé depuis le dernier Rendu
 
-- [1] Factorisation du code html en plusieurs fichiers ```.php``` pour éviter les répétitions de codes et faciliter la compréhension.
-- [2] Création d'un fichier JSON contenant toutes les informations des articles. Il se trouve dans le dossier ```json```
-- [3] Création du fichier ```varSession.inc.php``` qui permet de récupérer les données du fichier JSON. Il permet de faire le lien entre le fichier ```contenu.php``` et le fichier ```cat.json```
-- [4] Rajout de la fonction permettant d'ajouter un article au panier. Si la quantité choisie est égale à 0 le produit ne sera pas ajouté au panier. Le total du panier sera rajouté plus tard car pour le moment cette partie ne fonctionne pas.
-- [5] Rajout des boutons ```Connexion``` et ```Deconnexion```
-- [6] Création d'une base de données ```homeluxedesign``` contenant une table ```users``` qui contient elle même deux utilisateurs. 
+- Création de deux script ```.sql``` pour la base de données. Vous pourrez ensuite exécuter ces script dans mysql connecté en utilisateur ```root``` avec les commandes suivantes : 
+```
+mysql -u root -p
+```
+```
+source mysql/<monScript.sql>;
+```
 
-Vous n'avez pas accès à cette base de données, donc vous ne pouvez pas vous
-connecter depuis votre ordinateur. Pour le moment cela ne fonctionne que
-pour moi en local. Ainsi vous n'aurez pas accès au Panier.
-Pour quand même tester l'ajout des articles au panier il suffirat de mettre la balise (qui se situe dans ```header.php```) suivante :
-```
-<!-- <img class="iconPanier" src="img/panier.webp" alt="panier" onclick="afficherPanier(this)"> -->
-```
-en clair (enlever les balises de commentaires). Il faudra également passer le code php suivant : 
-```
- <?php
-    if (isset($_SESSION['login'])) {
-        echo '<img class="iconPanier" src="img/panier.webp" alt="panier" onclick="afficherPanier(this)">';
-    } else {
-        echo '<a href="php/connexion.php"><img class="iconPanier" src="img/panier.webp" alt="panier"></a>';
-    }     
-?>
-```
-en commentaires.
+- Grâce à la base de données, il est maintenant possible de se connecter ou de s'inscrire sur le site.
 
+- Il existe différents types d'utilisateurs : 
+    - ```admin``` : correspond à l'administrateur et seul cet utilisateur peut avoir accès aux stocks.
+    - ```user``` : correspond à l'utilisateur et il peut ajouter des produits au panier, les consulter, les enlever du panier et commander.  
+    - Lorsque l'utilisateur n'est pas connecté il n'à pas accès au panier eu ne peu seulement consulter le site.
+
+- Le design du site a été revu entièrement pour une meilleure visibilité et pour le rendre plus moderne. La navbar vous dirige toujours vers la section demandée à l'aide d'un scroll vers le bas.
+
+- Un bouton de retour vers le haut à également été ajouté pour faciliter la navigation.
+
+- Le code a été de nouveau refactoriser en fichier ```.php``` pour faciliter la compréhension.
+
+- Création de la page ```inscription.php``` permettant de se créer un compte sur le site.
+
+- Rajout du prix total du panier qui évolu en fonction des articles ajoutés, rajout de la quantité d'articles commandés.
 
 ---
 
@@ -41,7 +39,7 @@ Dans le terminal, se placer dans le dossier du projet et lancer la commande suiv
 ```
 php -S localhost:8080
 ```
-Puis dans un navigateur, aller sur l'adresse suivante :
+Puis dans un navigateur, rendez-vous sur l'adresse suivante :
 ```
 http://localhost:8080/index.php
 ```
@@ -49,17 +47,18 @@ http://localhost:8080/index.php
 
 ### Fonctionnalités du site web
 
-Navigation grâce à la navbar pour switcher entre les différentes sections (salon, cuisine, salle de bain...)  
+Navigation grâce à la navbar pour se déplacer plus vite entre les différentes sections du site (sections produits, section contact...).
 
-Possibilité de zoomer sur les images en cliquant dessus, de les dézoomer en cliquant sur la croix en haut à droite de l'image.
-Lorsque la souris passe sur une image, la description et le prix du produit apparait.
+Possibilité d'afficher l'image en plus grand au milieu de sa section en cliquant dessus. Pour enlever l'image agrandie il suffit de cliquer sur la crois en haut à droite de celle-ci.
 
-Pour afficher le stock de chaque produit, il faut cliquer sur le bouton ```Stock``` à droite de l'image. Pour le cacher, il faut cliquer à nouveau sur le bouton ```Stock```.
+Pour afficher la description et le prix des articles il vous suffit de survoler l'image.
 
 Possibilité de changer la quantité de produits à acheter en cliquant sur les boutons ```+``` et ```-```. La quantité s'affiche entre les boutons.
 
-Pour afficher le panier, il faut cliquer sur l'icone ```Panier``` en haut à droite de la page. Pour le cacher, il faut cliquer à nouveau sur l'icone ```Panier```.
-Vous ne pourrez accéder au panier que si vous êtes connectés au site. Pour se connecter vous avez le bouton ```Connexion``` qui vous renvoie sur la page ```connexion.php```. Pour le moment seul deux utilisateurs ont été crées pour se connecter, vous pourrez utiliser ceux-ci :
+Pour afficher le panier vous devez être connecter au site, si ce n'est pas le cas le bouton de panier vous renvois directement vers la page de Connexion.
+Une fois connecter il vous suffirat de recliquer sur l'icon de Panier et il apparaîtrat à la place de la section d'accueil.
+
+Pour se connecter, deux utilisteurs sont déjà définis dans la BDD : 
 ```
 login : admin
 password : admin
@@ -69,7 +68,8 @@ ou
 login : user
 password : password
 ```
-Une page d'inscritpion arrivant bientôt pour permettre à un utilisateur de se créer un compte et d'être rajouté dans la base de données pour ensuite pouvoir se connecter.
+Si vous rentrez des mauvaises informations de connexion une erreur est générée. 
+Si vous n'avez pas encore de compte vous pourrez alors accéder à la page d'inscription depuis la page de connexion et vous créer un compte. Ainsi vos identifiants seront automatiquement enregistrés dans la BDD et la prochaine fois vous n'aurez plus qu'à vous connecter.
 
 Un fois que vous êtes connecté, vous pouvez bien sûr vous déconnecter grâce au bouton ```Deconnexion```.
 
@@ -81,7 +81,6 @@ Dans la page contact se trouve le formulaire. Vous devez remplir tous les champs
 Lorsque vous cliquez sur le bouton ```Envoyer```, un mail se génère avec le résumé des informations que vous avez rentré dans le formulaire. Vous pouvez ensuite envoyer se mail au propriétaire du site.
 
 
-
 ---
 
 ### Le fichier main.js
@@ -91,9 +90,9 @@ Celles-ci sont toutes décrites à l'aide de commentaires.
 
 ---
 
-### Le fichier style.css
+### Les fichiers style.css
 
-Le fichier ```style.css``` se trouve dans le dossier ```css/``` qui contient également le dossier ```font/``` qui contient les polices d'écritures utilisées dans le site web.
+Les fichiers ```.css``` se trouve dans le dossier ```css/``` et contiennent tout le design du site. Le dossier ```css/``` contient également le dossier ```font/``` qui contient les polices d'écritures utilisées dans le site web.
 
 ---
 
@@ -110,5 +109,15 @@ Le fichier ```cat.json``` se trouve dans le dossier ```json/``` et contient tout
 
 ---
 
+### Les fichiers .sql
 
+Les fichiers ```.sql``` se trouvent dans le dossier ```mysql/``` et contiennent les scripts de création de la base de données et de ses tables.
+
+---
+
+### Les fichiers .php
+
+Les fichiers ```.php``` se trouvent dans le dossier ```php/``` et contiennent la factorisation du code ```html``` et les différentes requêtes ```php``` nécessaires au site.
+
+---
 
